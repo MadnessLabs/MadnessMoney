@@ -1,0 +1,81 @@
+  /*///////////////////////
+ //  Theme Variables
+///////////////////////*/
+:root {
+  --theme-light: #FFFFFF;
+  --theme-lighter-grey: #EEEEEE;
+  --theme-light-grey: #DDDDDD;
+  --theme-blue-light-grey: #EFF0F4;
+  --theme-grey: #CCCCCC;
+  --theme-dark-grey: #95989A;
+  --theme-darker-grey: #666666;
+  --theme-dark: #313140;
+
+  --ion-color-primary: #377F26;
+  --ion-color-secondary: #26CC00;
+  --ion-color-tertiary: #105400;
+  --ion-color-success: #26CC00;
+  --ion-color-warning: yellow;
+  --ion-color-danger: red;
+  --ion-color-light: var(--theme-light);
+  --ion-color-medium: var(--theme-dark-grey);
+  --ion-color-dark: var(--theme-dark);
+
+  --ion-background-color: var(--theme-light);
+  --ion-item-background-color: #FFFFFF;
+}
+
+  /*///////////////////////
+ //  Font Families
+///////////////////////*/
+ion-page {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  position: absolute;
+  z-index: 0;
+  display: flex;
+
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 100%;
+
+  contain: layout size style;
+}
+
+#app-content ion-content>.scroll-md {
+  background-color: var(--theme-light);
+}
+
+  /*///////////////////////
+ //  Contextual Loader
+///////////////////////*/
+.is-loading {
+  pointer-events: none;
+}
+.is-loading:before {
+  transition: all 400ms ease;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 99;
+}
+.is-loading:after {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  content: url('data:image/svg+xml;charset=UTF-8,SVG_FOR_PROJECT');
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+  z-index: 100;
+}

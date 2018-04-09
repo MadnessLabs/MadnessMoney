@@ -1,0 +1,91 @@
+{
+    "name": "@madnesslabs/madnessmoney",
+    "private": true,
+    "version": "1.0.0",
+    "description": "A money management app by Madness Labs",
+    "files": [
+        "dist/"
+    ],
+    "scripts": {
+        "copy": "node tasks/copy.js",
+        "build": "npm run docs && npm run copy && stencil build && npx cap copy",
+        "build:app": "npm run copy && stencil build && npx cap copy",
+        "build:prerender": "npm run copy && stencil build --prerender",
+        "build:stats": "npm run copy && stencil build --stats",
+        "deploy:api": "cd functions && npm run test && firebase deploy --only functions",
+        "deploy:app": "npm run copy && stencil build && firebase deploy --only hosting",
+        "deploy:docs": "npm run docs && firebase deploy --only hosting",
+        "dev": "npm run copy && sd concurrent \"stencil build --dev --watch\" \"npm run sync\" ",
+        "dev:live": "sd concurrent \"stencil build --watch\" \"npm run sync\" ",
+        "docs": "npm run docs:components && npm run docs:api",
+        "docs:api": "apidoc -i ./functions/src/ -o ./www/docs/api",
+        "docs:components": "typedoc --name \"TrackMyGiving Components\" --out ./www/docs/components --exclude **/*.spec.ts ./src",
+        "serve": "npm run sync",
+        "start": "rimraf www/build && npm run dev",
+        "stencil": "rimraf www/* && npm run build",
+        "sync": "browser-sync start -c bs-config.js",
+        "test": "jest --no-cache",
+        "test:watch": "jest --watch --no-cache"
+    },
+    "enjin": {
+        "root": "www"
+    },
+    "dependencies": {
+        "@capacitor/android": "^1.0.0-alpha.31",
+        "@capacitor/cli": "^1.0.0-alpha.33",
+        "@capacitor/core": "^1.0.0-alpha.33",
+        "@ionic/core": "4.0.0-alpha.1",
+        "@stencil/core": "0.7.18",
+        "chart.js": "2.6.0",
+        "cleave.js": "^1.1.1",
+        "cordova-plugin-googleplus": "^5.2.2",
+        "firebase": "^4.12.1",
+        "madnessfeedback": "0.0.1",
+        "moment": "^2.20.1"
+    },
+    "devDependencies": {
+        "@stencil/sass": "0.0.3",
+        "@stencil/utils": "latest",
+        "@types/jest": "^21.1.1",
+        "apidoc": "^0.17.6",
+        "archiver": "^2.1.0",
+        "browsersync": "0.0.1-security",
+        "connect-history-api-fallback": "^1.5.0",
+        "copy": "^0.3.1",
+        "dotenv": "^4.0.0",
+        "fs-extra": "^4.0.3",
+        "jest": "^21.2.1",
+        "typedoc": "^0.10.0",
+        "typedoc-plugin-external-module-name": "^1.1.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ionic-team/stencil-app-starter.git"
+    },
+    "author": "Ionic Team",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ionic-team/stencil"
+    },
+    "homepage": "https://github.com/ionic-team/stencil",
+    "jest": {
+        "transform": {
+            "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"
+        },
+        "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx?|jsx?)$",
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js",
+            "json",
+            "jsx"
+        ]
+    },
+    "apidoc": {
+        "name": "Madness Money - API Documentation",
+        "title": "Madness Money - API Documentation",
+        "description": "The documentation for integrating with Madness Money's restful API",
+        "url": "https://api.madnessmoney.com/v1",
+        "sampleUrl": "http://localhost:5000/madness-money/us-central1/api"
+    }
+}

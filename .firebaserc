@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "dev": "madness-money",
+    "default": "madness-money"
+  }
+}

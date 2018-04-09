@@ -1,0 +1,6 @@
+{
+  "appId": "net.madnessenjin.madnessmoney",
+  "appName": "MadnessMoney",
+  "bundledWebRuntime": false,
+  "webDir": "www"
+}
